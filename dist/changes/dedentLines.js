@@ -1,15 +1,20 @@
-"use strict";
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+require('slate');
 
 /**
  * Dedent all lines in selection
- * @param  {Change} change
- * @param  {String} indent To remove
- * @return {Change}
  */
-function dedentLines(opts, change, indent) {
-    var state = change.state;
-    var document = state.document,
-        selection = state.selection;
+function dedentLines(opts, change,
+// Indent to remove
+indent) {
+    var value = change.value;
+    var document = value.document,
+        selection = value.selection;
 
     var lines = document.getBlocksAtRange(selection).filter(function (node) {
         return node.type === opts.lineType;
@@ -24,5 +29,4 @@ function dedentLines(opts, change, indent) {
         return c.removeTextByKey(text.key, 0, lengthToRemove);
     }, change);
 }
-
-module.exports = dedentLines;
+exports.default = dedentLines;

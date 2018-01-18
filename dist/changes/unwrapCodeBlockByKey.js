@@ -1,16 +1,17 @@
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+require('slate');
+
 /**
  * Unwrap a code block into a normal block.
- *
- * @param  {Change} change
- * @param  {String} key
- * @param  {String} type
- * @return {Change}
  */
 function unwrapCodeBlockByKey(opts, change, key, type) {
-    var state = change.state;
-    var document = state.document;
+    var value = change.value;
+    var document = value.document;
 
     // Get the code block
 
@@ -22,10 +23,9 @@ function unwrapCodeBlockByKey(opts, change, key, type) {
 
     // change lines into paragraph
     codeBlock.nodes.forEach(function (line) {
-        return change.setNodeByKey(line.key, { type: type }).unwrapNodeByKey(line.key);
+        return change.setNodeByKey(line.key, { type: type }, { normalize: false }).unwrapNodeByKey(line.key, { normalize: false });
     });
 
     return change;
 }
-
-module.exports = unwrapCodeBlockByKey;
+exports.default = unwrapCodeBlockByKey;

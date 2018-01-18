@@ -1,17 +1,19 @@
 'use strict';
 
-var deserializeCode = require('../deserializeCode');
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+require('slate');
+
+var _utils = require('../utils');
 
 /**
  * Wrap a block into a code block.
- *
- * @param  {Change} change
- * @param  {String} key
- * @return {Change}
  */
 function wrapCodeBlockByKey(opts, change, key) {
-    var state = change.state;
-    var document = state.document;
+    var value = change.value;
+    var document = value.document;
 
 
     var startBlock = document.getDescendant(key);
@@ -23,10 +25,10 @@ function wrapCodeBlockByKey(opts, change, key) {
     });
 
     // Insert new text
-    var toInsert = deserializeCode(opts, text);
+    var toInsert = (0, _utils.deserializeCode)(opts, text);
 
     toInsert.nodes.forEach(function (node, i) {
-        change.insertNodeByKey(startBlock.key, i, node);
+        change.insertNodeByKey(startBlock.key, i, node, { normalize: false });
     });
 
     // Set node type
@@ -37,4 +39,4 @@ function wrapCodeBlockByKey(opts, change, key) {
     return change;
 }
 
-module.exports = wrapCodeBlockByKey;
+exports.default = wrapCodeBlockByKey;

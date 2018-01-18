@@ -1,21 +1,33 @@
 'use strict';
 
-var wrapCodeBlock = require('./wrapCodeBlock');
-var unwrapCodeBlock = require('./unwrapCodeBlock');
-var isInCodeBlock = require('../isInCodeBlock');
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+require('slate');
+
+var _utils = require('../utils');
+
+var _wrapCodeBlock = require('./wrapCodeBlock');
+
+var _wrapCodeBlock2 = _interopRequireDefault(_wrapCodeBlock);
+
+var _unwrapCodeBlock = require('./unwrapCodeBlock');
+
+var _unwrapCodeBlock2 = _interopRequireDefault(_unwrapCodeBlock);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
  * Toggle code block / paragraph.
- * @param  {Change} change
- * @param  {String} type
- * @return {Change}
  */
-function toggleCodeBlock(opts, change, type) {
-    if (isInCodeBlock(opts, change.state)) {
-        return unwrapCodeBlock(opts, change, type);
-    } else {
-        return wrapCodeBlock(opts, change);
+function toggleCodeBlock(opts, change,
+// When toggling a code block off, type to convert to
+type) {
+    if ((0, _utils.isInCodeBlock)(opts, change.value)) {
+        return (0, _unwrapCodeBlock2.default)(opts, change, type);
     }
+    return (0, _wrapCodeBlock2.default)(opts, change);
 }
 
-module.exports = toggleCodeBlock;
+exports.default = toggleCodeBlock;
