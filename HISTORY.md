@@ -2,6 +2,23 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+### 0.13.2
+
+- Add `getIndent` option to customize the indent unit used.
+- Fix Ctrl shortcuts on Windows/Linux
+
+### 0.13.1
+
+- Properly declare `immutable` as a peer dependency (already a peer dependency of slate)
+
+### 0.13.0
+
+- Upgrade to be compatible with Slate > 0.29.x
+
+### 0.12.0
+
+- Upgrade to be compatible with Slate > 0.27.x
+
 ### 0.11.0
 
 - Upgrade to be compatable with Slate after the `expose-transform` branch went in.
