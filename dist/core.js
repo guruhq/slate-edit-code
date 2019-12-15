@@ -25,7 +25,6 @@ function core(optsParam) {
 
     return {
         schema: (0, _validation.schema)(opts),
-        validateNode: (0, _validation.validateNode)(opts),
 
         changes: {
             unwrapCodeBlockByKey: _changes.unwrapCodeBlockByKey.bind(null, opts),
