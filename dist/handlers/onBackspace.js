@@ -51,7 +51,7 @@ function onBackspace(opts, event, change, editor) {
         if (isStartOfCode && isEmpty) {
             event.preventDefault();
             // Convert it to default exit type
-            return change.setBlock(opts.exitBlockType, { normalize: false }).unwrapNodeByKey(currentLine.key);
+            return change.setBlocks(opts.exitBlockType, { normalize: false }).unwrapNodeByKey(currentLine.key);
         }
     }
     return undefined;
