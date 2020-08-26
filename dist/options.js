@@ -55,13 +55,16 @@ var Options = function (_Record) {
             });
 
             change.deleteAtRange(range, { normalize: false });
-            change.insertBlockAtRange(change.value.selection, exitBlock, {
-                normalize: false
-            });
-            // Exit the code block
-            change.unwrapNodeByKey(exitBlock.key);
+            // change.insertBlockAtRange(change.value.selection, exitBlock, {
+            //     normalize: false
+            // });
 
-            return change.collapseToStartOf(exitBlock);
+
+            // Exit the code block
+            // change.unwrapNodeByKey(exitBlock.key);
+
+            return change.collapseToEndOf(topLevelBlock).insertBlock(Constants.PARAGRAPH).collapseToStartOfNextBlock();
+            // return change.collapseToStartOf(exitBlock);
         }
     }]);
 
