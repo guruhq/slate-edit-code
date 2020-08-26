@@ -65,8 +65,8 @@ var Options = function (_Record) {
             // Exit the code block
             // change.unwrapNodeByKey(exitBlock.key);
 
-            return change.collapseToEndOf(topLevelBlock).collapseToStartOfNextBlock().insertBlock(exitBlock);
             // return change.collapseToStartOf(exitBlock);
+            return change.collapseToEndOf(topLevelBlock).insertBlock(exitBlock).collapseToStartOfNextBlock().insertBlock(exitBlock);
         }
     }]);
 
