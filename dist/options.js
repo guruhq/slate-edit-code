@@ -54,6 +54,8 @@ var Options = function (_Record) {
                 nodes: [_slate.Text.create()]
             });
 
+            var topLevelBlock = change.value.document.getParent(change.value.focusBlock.key);
+
             change.deleteAtRange(range, { normalize: false });
             // change.insertBlockAtRange(change.value.selection, exitBlock, {
             //     normalize: false
