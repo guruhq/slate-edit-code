@@ -66,7 +66,7 @@ var Options = function (_Record) {
             // change.unwrapNodeByKey(exitBlock.key);
 
             // return change.collapseToStartOf(exitBlock);
-            return change.collapseToEndOf(topLevelBlock).insertBlock(exitBlock).unwrapBlockByKey(exitBlock.key).collapseToStartOfNextBlock();
+            return change.collapseToEndOf(topLevelBlock).insertBlock(exitBlock).collapseToStartOfNextBlock().unwrapBlockByKey(exitBlock.key);
         }
     }]);
 
